@@ -8,5 +8,5 @@ using o2c
     z = 1
 
     E = o2c.nernst_potential(C_out, C_in, T, z)
-    @test isapprox(E, 0.061, atol = 1e-3)
+    @test isapprox(E, 0.061, atol=1e-3)
 end

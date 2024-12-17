@@ -23,14 +23,14 @@ E_Cl = [
 ] # Chloride (Cl⁻)
 
 # Plot the results
-plot(C_out_values, E_K, label = "Potassium (K⁺)", linewidth = 2)
-plot!(C_out_values, E_Na, label = "Sodium (Na⁺)", linewidth = 2)
-plot!(C_out_values, E_Cl, label = "Chloride (Cl⁻)", linewidth = 2)
+plot(C_out_values, E_K; label="Potassium (K⁺)", linewidth=2)
+plot!(C_out_values, E_Na; label="Sodium (Na⁺)", linewidth=2)
+plot!(C_out_values, E_Cl; label="Chloride (Cl⁻)", linewidth=2)
 
 # Plot settings
-plot!(
-    xlabel = "Extracellular Concentration (mol/L)",
-    ylabel = "Nernst Potential (V)",
-    title = "Nernst Potential for Different Ions",
-    legend = :topleft,
+plot!(;
+    xlabel="Extracellular Concentration (mol/L)",
+    ylabel="Nernst Potential (V)",
+    title="Nernst Potential for Different Ions",
+    legend=:topleft,
 )

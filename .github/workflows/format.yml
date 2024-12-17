@@ -24,7 +24,7 @@ jobs:
 
       - name: Run JuliaFormatter
         run: |
-          julia -e 'using JuliaFormatter; format(".", verbose=true)'
+          julia --project=@. -e 'using JuliaFormatter; format(".", verbose=true, style=BlueStyle(), overwrite=false)'
 
       - name: Verify Formatting
         run: |
