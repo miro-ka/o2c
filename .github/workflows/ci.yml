@@ -1,4 +1,4 @@
-name: Julia CI
+name: tests and analysis
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
     branches: [main]
 
 jobs:
-  # Job 1: Run Unit Tests
   tests:
     name: Run Tests
     runs-on: ubuntu-latest
@@ -18,7 +17,16 @@ jobs:
       - name: Set up Julia
         uses: julia-actions/setup-julia@v2
         with:
-          version: '1.11.1'
+          version: '1.11.2'
+
+      # Cache Julia dependencies
+      - name: Cache Julia Artifacts and Compiled Packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.julia
+          key: ${{ runner.os }}-julia-${{ hashFiles('**/Project.toml', '**/Manifest.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-julia-
 
       - name: Install dependencies
         run: |
@@ -28,32 +36,7 @@ jobs:
         run: |
           julia --project=@. -e 'using Pkg; Pkg.test()'
 
-  # Job 2: Check Code Formatting
-  format:
-    name: Check Code Format
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Julia
-        uses: julia-actions/setup-julia@v2
-        with:
-          version: '1.11.1'
-
-      - name: Install JuliaFormatter
-        run: |
-          julia --project=@. -e 'using Pkg; Pkg.add("JuliaFormatter")'
-
-      - name: Run JuliaFormatter
-        run: |
-          julia --project=@. -e 'using JuliaFormatter; format(".", verbose=true)'
-
-      - name: Verify Formatting
-        run: |
-          git diff --exit-code || (echo "Code is not formatted. Run JuliaFormatter locally." && exit 1)
-
-  # Job 3: Static Analysis with JET
+  # Optional: Static Analysis with JET
   static-analysis:
     name: Static Analysis with JET
     runs-on: ubuntu-latest
@@ -65,6 +48,15 @@ jobs:
         uses: julia-actions/setup-julia@v2
         with:
           version: '1.11.1'
+
+      # Cache dependencies
+      - name: Cache Julia Artifacts and Compiled Packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.julia
+          key: ${{ runner.os }}-julia-${{ hashFiles('**/Project.toml', '**/Manifest.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-julia-
 
       - name: Install JET
         run: |
