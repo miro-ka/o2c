@@ -18,7 +18,7 @@ using o2c
     t = 0.0
 
     du = similar(u0)
-    o2c.hodgkin_huxley(du, u0, p, t)
+    o2c.hodgkin_huxley!(du, u0, p, t)
 
     # Expected output for du[1] (membrane potential derivative)
     expected_du1 =

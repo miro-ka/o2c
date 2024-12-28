@@ -22,7 +22,7 @@ tspan = (0.0, 50.0)  # ms
 p = (g_Na, g_K, g_L, E_Na, E_K, E_L, C_m, I_ext)
 
 # Solve Hodgkin–Huxley ODE
-prob = ODEProblem(o2c.hodgkin_huxley, u0, tspan, p)
+prob = ODEProblem(o2c.hodgkin_huxley!, u0, tspan, p)
 sol = solve(prob)
 
 # Extracting solution components

@@ -3,7 +3,7 @@ module HodgkinHuxley
 using DifferentialEquations
 
 """
-    hodgkin_huxley(du, u, p, t)
+    hodgkin_huxley!(du, u, p, t)
 
 Defines the Hodgkin-Huxley system of ODEs.
 
@@ -21,10 +21,10 @@ None. Updates `du` with derivatives for the system.
 u0 = [-65.0, 0.0529, 0.5961, 0.3177]
 p = (120.0, 36.0, 0.3, 50.0, -77.0, -54.387, 1.0, 10.0)
 du = similar(u0)
-hodgkin_huxley(du, u0, p, 0.0)
+hodgkin_huxley!(du, u0, p, 0.0)
 """
 
-function hodgkin_huxley(du, u, p, t)
+function hodgkin_huxley!(du, u, p, t)
     # Unpack variables
     V, m, h, n = u
     g_Na, g_K, g_L, E_Na, E_K, E_L, C_m, I_ext = p
@@ -47,7 +47,7 @@ function hodgkin_huxley(du, u, p, t)
 
     du[2] = α_m * (1.0 - m) - β_m * m
     du[3] = α_h * (1.0 - h) - β_h * h
-    return du[4] = α_n * (1.0 - n) - β_n * n
+    du[4] = α_n * (1.0 - n) - β_n * n
 end
 
 end # module HodgkinHuxley
