@@ -1,8 +1,7 @@
 using o2c
 using Plots
-using o2c.Constants  # Import the Constants module
+using o2c.Constants
 
-# Fixed temperature
 T = 310.15  # Temperature in Kelvin
 
 # Range of extracellular concentrations
