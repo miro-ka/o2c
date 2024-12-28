@@ -12,16 +12,11 @@ using Pkg
 Pkg.add(url="https://github.com/miro-ka/o2c")
 ```
 
-## Included models & Equations
+## Included models
 
-- **Hodgkin–Huxley model**  
-  - [Hodgkin and Huxley (1952)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1392413/)
-
-- **Morris–Lecar model**  
-  - [Morris and Lecar (1981)](https://doi.org/10.1016/S0006-3495(81)84782-0)
-
-- **Nernst Equation**  
-  - [Nernst (1888)](https://en.wikipedia.org/wiki/Nernst_equation)
+- [Hodgkin and Huxley (1952)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1392413/)
+- [Morris and Lecar (1981)](https://doi.org/10.1016/S0006-3495(81)84782-0)
+- [Nernst (1888)](https://en.wikipedia.org/wiki/Nernst_equation)
 
 
 ## Examples
