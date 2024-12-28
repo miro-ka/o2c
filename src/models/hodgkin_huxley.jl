@@ -47,7 +47,7 @@ function hodgkin_huxley!(du, u, p, t)
 
     du[2] = α_m * (1.0 - m) - β_m * m
     du[3] = α_h * (1.0 - h) - β_h * h
-    du[4] = α_n * (1.0 - n) - β_n * n
+    return du[4] = α_n * (1.0 - n) - β_n * n
 end
 
 end # module HodgkinHuxley
